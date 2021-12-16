@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable prettier/prettier */
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { User } from '../models/user.model';
 import { UsersService } from '../services/users.service';
 
@@ -9,8 +10,16 @@ export class UsersController {
     constructor(private userService: UsersService) { }
 
     @Post()
-    createUser(@Body() user: User): Promise<User> {
-        return this.userService.createUsers(user)
+    createUser(@Body() user: User): Observable<User> {
+        return this.userService.createUsers(user).pipe(
+            map((user: User) => user)
+        )
+    }
+    @Post("login")
+    login(@Body() user: User): Observable<Object> {
+        return this.userService.login(user).pipe(map((jwt: string) => {
+            return { access_token: jwt }
+        }))
     }
     @Get()
     findAll(): Observable<User[]> {
