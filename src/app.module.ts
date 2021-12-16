@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -6,6 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { UserModule } from './modules/users/user.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { UsersService } from './modules/users/services/users.service';
 
 
 @Module({
@@ -24,6 +26,7 @@ import { AuthModule } from './modules/auth/auth.module';
   ],
   controllers: [AppController],
   providers: [AppService],
+
 })
 export class AppModule {
 
