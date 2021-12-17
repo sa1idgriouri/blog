@@ -1,0 +1,40 @@
+<ng-container *ngIf="sidebarItem?.sidebarItems == undefined && sidebarItem?.fragment == undefined">
+    <a mat-list-item [routerLink]="sidebarItem?.url" [routerLinkActive]="'mat-list-item-active'"
+        [routerLinkActiveOptions]="{exact: true}">
+        <mat-icon> {{ sidebarItem?.icon }} </mat-icon>
+        <span>{{ sidebarItem?.text }}</span>
+    </a>
+
+
+</ng-container>
+
+
+<ng-container *ngIf="sidebarItem?.sidebarItems == undefined && sidebarItem?.fragment != undefined">
+    <a mat-list-item [routerLink]="sidebarItem?.url" [routerLinkActive]="'mat-list-item-active'"
+        [fragment]="sidebarItem?.fragment" [routerLinkActiveOptions]="{exact: true}">
+
+        <mat-icon> {{ sidebarItem?.icon }} </mat-icon>
+        <span>{{ sidebarItem?.text }}</span>
+    </a>
+
+    <div>
+    </div>
+
+</ng-container>
+
+<ng-container *ngIf="sidebarItem?.sidebarItems != undefined">
+    <mat-expansion-panel #panel>
+        <mat-expansion-panel-header>
+            <mat-icon> {{ sidebarItem?.icon }} </mat-icon>
+            <span>{{ sidebarItem?.text }}</span>
+        </mat-expansion-panel-header>
+        <ng-container *ngFor="let sidebarItem of sidebarItem?.sidebarItems">
+            <app-sidebar-item [sidebarItem]="sidebarItem"></app-sidebar-item>
+        </ng-container>
+
+
+    </mat-expansion-panel>
+
+
+
+</ng-container>

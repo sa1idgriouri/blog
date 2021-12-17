@@ -1,0 +1,18 @@
+<mat-label>{{accessorySchema.label}}</mat-label>
+<mat-icon matSuffix *ngIf="accessoryFormComponent.schema?.type == 'registration' && accessoryControl.invalid && accessoryControl.touched == true && accessoryControl.enabled"
+	themeColor="warn">
+	cancel</mat-icon>
+<mat-icon matSuffix *ngIf="accessoryFormComponent.schema?.type == 'registration' && accessoryControl.valid && accessoryFormComponent.submitted" themeColor="success">
+	check_circle</mat-icon>
+<mat-spinner matSuffix [diameter]="18" *ngIf="accessoryFormComponent.schema?.type == 'registration' && accessoryControl.pending"></mat-spinner>
+
+<mat-hint>{{ accessorySchema.hint }}</mat-hint>
+
+<ng-container *ngFor="let error of getErrors()" ngProjectAs="mat-error">
+	<mat-error *ngIf="accessorySchema.errorMessages != undefined && accessorySchema.errorMessages[ObjectKeys(error)[0]] != undefined">
+		{{ accessorySchema.errorMessages[ObjectKeys(error)[0]]}}
+	</mat-error>
+	<mat-error *ngIf="!(accessorySchema.errorMessages != undefined && accessorySchema.errorMessages[ObjectKeys(error)[0]] != undefined)">
+		{{ validatorService.getErrorMessage(error) }}
+	</mat-error>
+</ng-container>

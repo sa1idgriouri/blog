@@ -1,0 +1,12 @@
+<app-header (toggleSidebar)="onToggleSidebarClick($event)" [enableSidebarToggleButton]="isSidebarLocked == false">
+</app-header>
+
+<mat-sidenav-container autosize>
+    <mat-sidenav [mode]="deviceService.screenSize >= eScreenSize.md ? 'side' : 'over'"
+        [opened]="deviceService.screenSize >= eScreenSize.md ? 'true' : 'false'" #sidenav>
+        <app-sidebar [mode]="sidebarMode"></app-sidebar>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

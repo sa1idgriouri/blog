@@ -1,0 +1,57 @@
+<mat-toolbar>
+    <span id="leftContainer">
+        <button mat-icon-button (click)=toggleSidebar.emit($event); [style.margin-right]="'10px'"
+            *ngIf="enableSidebarToggleButton == true">
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        <ng-container *ngIf="deviceService.screenSize <= eScreenSize.sm">
+            <span>{{title}}</span>
+        </ng-container>
+
+        <span *ngIf="deviceService.screenSize >= eScreenSize.md" id="logoWrapper">
+            <img src="assets/images/logo2.png" id="logo">
+        </span>
+    </span>
+
+
+    <span [style.flex]="'1 1 auto'"></span>
+
+    <span [style.display]="'flex'" [style.align-items]="'center'">
+
+
+
+        <ng-container *ngIf="deviceService.screenSize >= eScreenSize.md">
+            <button mat-button>
+                <img src="/assets/images/login.png" class="imageLogin">
+                <span id="fullName">
+                    {{ userFullName }}
+                </span>
+
+            </button>
+
+        </ng-container>
+
+        <ng-container *ngIf="deviceService.screenSize >= eScreenSize.md">
+            <button mat-icon-button (click)="toggleFullScreen($event)">
+                <mat-icon>open_in_full</mat-icon>
+            </button>
+        </ng-container>
+
+        <ng-container *ngIf="deviceService.screenSize >= eScreenSize.md">
+            <button mat-icon-button (click)="logout($event)">
+                <mat-icon>logout</mat-icon>
+            </button>
+        </ng-container>
+
+
+
+
+
+    </span>
+
+
+
+
+
+</mat-toolbar>

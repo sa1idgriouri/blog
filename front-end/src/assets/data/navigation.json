@@ -1,0 +1,62 @@
+[
+    {
+        "icon": "dashboard",
+        "text": "Tableau de bord",
+        "conditions": "Dashboard",
+        "url": "/dashboard"
+    },
+    {
+        "icon": "people_alt",
+        "text": "Utilisateurs",
+        "sidebarItems": [
+            {
+                "icon": "person_add",
+                "text": "Nouveau utilisateur",
+                "conditions": "AddUser",
+                "url": "/users/new"
+            },
+            {
+                "icon": "list_alt",
+                "text": "Liste des utilisateurs",
+                "conditions": "DisplayUserList",
+                "url": "/users"
+            },
+            {
+                "icon": "group_add",
+                "text": "Nouveau rôle",
+                "conditions": "AddRole",
+                "url": "/roles/new"
+            },
+            {
+                "icon": "list_alt",
+                "text": "Liste des rôles",
+                "conditions": "DisplayRoleList",
+                "url": "/roles"
+            }
+        ]
+    },
+    {
+        "icon": "calendar_today",
+        "text": "Agenda",
+        "sidebarItems": [
+            {
+                "icon": "today",
+                "text": "Calendrier",
+                "url": "/agenda",
+                "conditions": "Dummy"
+            },
+            {
+                "icon": "settings",
+                "text": "Configuration",
+                "url": "/agenda/settings",
+                "conditions": "Dummy"
+            }
+        ]
+    },
+    {
+        "icon": "extension",
+        "text": "Modules",
+        "conditions": "DisplayModuleList",
+        "url": "/modules"
+    }
+]

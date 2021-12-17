@@ -1,0 +1,15 @@
+<mat-accordion [multi]="false" [@.disabled]="disableAnimation" #accordion>
+	<mat-expansion-panel #groupFormExpansionPanel id="groupFormExpansionPanel" themeColor="success">
+		<mat-expansion-panel-header>
+			Nouveau groupe
+		</mat-expansion-panel-header>
+		<app-group-form (submit)="onFormSubmit($event)"></app-group-form>
+	</mat-expansion-panel>
+
+	<mat-expansion-panel #groupListExpansionPanel themeColor="info">
+		<mat-expansion-panel-header>
+			Liste des groupes
+		</mat-expansion-panel-header>
+		<app-group-list [groups]="groups" (details)="onDetailsClick($event)" (update)="onUpdateClick($event)" (delete)="onDeleteClick($event)"></app-group-list>
+	</mat-expansion-panel>
+</mat-accordion>

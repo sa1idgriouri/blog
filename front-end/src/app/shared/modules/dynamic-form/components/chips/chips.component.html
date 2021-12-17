@@ -1,0 +1,47 @@
+<div style="display: inline-flex; flex-direction: row; align-items: center;">
+
+	<ng-container *ngIf="schema.leadingIcon !== undefined">
+		<mat-icon class="df-leading-icon">
+			{{schema.leadingIcon}}
+		</mat-icon>
+	</ng-container>
+
+	<mat-form-field [formGroup]="group" [class.mat-form-field-valid]="group.get(name)?.valid">
+
+		<mat-label>
+			{{ schema.label! }}
+		</mat-label>
+
+		<mat-chip-list #chipList>
+			<mat-chip *ngFor="let selectedItem of selectedItems" [selectable]="false" [removable]="schema.enabled != false" (removed)="onRemove(selectedItem)">
+				{{ selectedItem }}
+				<mat-icon matChipRemove *ngIf="schema.enabled != false">cancel</mat-icon>
+			</mat-chip>
+
+			<input [placeholder]="schema.placeholder!" [formControl]="inputFormControl" [matAutocomplete]="auto" [matChipInputFor]="chipList"
+				[matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="onAdd($event)" #input>
+
+			<mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSelected($event)">
+				<mat-option *ngFor="let text of filteredTexts | async" [value]="text">
+					{{text}}
+				</mat-option>
+			</mat-autocomplete>
+
+		</mat-chip-list>
+
+		<mat-icon matSuffix *ngIf="displayInvalidIcon" themeColor="warn">cancel</mat-icon>
+		<mat-icon matSuffix *ngIf="displayValidIcon" themeColor="success">check_circle</mat-icon>
+		<mat-spinner matSuffix [diameter]="18" *ngIf="displayPendingIcon"></mat-spinner>
+
+		<mat-hint>{{ schema.hint }}</mat-hint>
+		<ng-container *ngFor="let error of getErrors()" ngProjectAs="mat-error">
+			<mat-error *ngIf="schema.errorMessages != undefined && schema.errorMessages[ObjectKeys(error)[0]] != undefined">
+				{{ schema.errorMessages[ObjectKeys(error)[0]] }}</mat-error>
+			<mat-error *ngIf="!(schema.errorMessages != undefined && schema.errorMessages[ObjectKeys(error)[0]] != undefined)">
+				{{
+				validatorService.getErrorMessage(error) }} </mat-error>
+		</ng-container>
+
+	</mat-form-field>
+
+</div>

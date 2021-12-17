@@ -1,0 +1,7 @@
+<mat-card>
+    <div id="errorWrapper" *ngIf="errorMessage != undefined">
+        {{ errorMessage }}
+    </div>
+    <df-form [schema]="formSchema" (submit)="onLoginClick($event)">
+    </df-form>
+</mat-card>

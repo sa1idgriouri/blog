@@ -1,0 +1,262 @@
+@use "~@angular/material" as mat;
+
+@use "_button-theme" as button;
+@use "_expansion-theme" as expansion;
+@use "_icon-theme" as icon;
+@use "_button-toggle-theme" as button-toggle;
+@use "_toolbar-theme" as toolbar;
+
+@import "typography";
+
+$app-primary-color: #1f84f8;
+$app-accent-color: #1f84f8;
+$app-warn-color: #d20a0a;
+
+$app-success-color: #0ebf6e;
+$app-info-color: #61affe;
+$app-warning-color: #f4ca64;
+$app-danger-color: #f93e3e;
+
+/*#region primary*/
+
+body {
+  --primary-color: #{$app-primary-color};
+  --primary-lighter-color: #{lighten($app-primary-color, 20%)};
+  --primary-darker-color: #{darken($app-primary-color, 20%)};
+  --text-primary-color: #{$light-primary-text};
+  --text-primary-lighter-color: #{$dark-primary-text};
+  --text-primary-darker-color: #{$light-primary-text};
+}
+$mat-primary: (
+  main: $app-primary-color,
+  lighter: lighten($app-primary-color, 20%),
+  darker: darken($app-primary-color, 20%),
+  200: $app-primary-color,
+  // For slide toggle,
+  contrast:
+    (
+      main: $dark-primary-text,
+      lighter: $dark-primary-text,
+      darker: $dark-primary-text,
+    ),
+);
+
+$app-primary-palette: mat.define-palette($mat-primary, main, lighter, darker);
+
+/*#endregion*/
+
+/*#region accent*/
+
+body {
+  --accent-color: #{$app-accent-color};
+  --accent-lighter-color: #{lighten($app-accent-color, 20%)};
+  --accent-darker-color: #{darken($app-accent-color, 20%)};
+  --text-accent-color: #{$light-accent-text};
+  --text-accent-lighter-color: #{$dark-accent-text};
+  --text-accent-darker-color: #{$light-accent-text};
+}
+$mat-accent: (
+  main: $app-accent-color,
+  lighter: lighten($app-accent-color, 20%),
+  darker: darken($app-accent-color, 20%),
+  200: $app-accent-color,
+  // For slide toggle,
+  contrast:
+    (
+      main: $light-accent-text,
+      lighter: $dark-accent-text,
+      darker: $light-accent-text,
+    ),
+);
+
+$app-accent-palette: mat.define-palette($mat-accent, main, lighter, darker);
+
+/*#endregion*/
+
+/*#region warn*/
+
+body {
+  --warn-color: #{$app-warn-color};
+  --warn-lighter-color: #{lighten($app-warn-color, 20%)};
+  --warn-darker-color: #{darken($app-warn-color, 20%)};
+  --text-warn-color: #{$light-primary-text};
+  --text-warn-lighter-color: #{$dark-primary-text};
+  --text-warn-darker-color: #{$light-primary-text};
+}
+$mat-warn: (
+  main: $app-warn-color,
+  lighter: lighten($app-warn-color, 20%),
+  darker: darken($app-warn-color, 20%),
+  200: $app-warn-color,
+  // For slide toggle,
+  contrast:
+    (
+      main: $light-primary-text,
+      lighter: $dark-primary-text,
+      darker: $light-primary-text,
+    ),
+);
+
+$app-warn-palette: mat.define-palette($mat-warn, main, lighter, darker);
+
+/*#endregion*/
+
+/*#region success*/
+
+body {
+  --success-color: #{$app-success-color};
+  --success-lighter-color: #{lighten($app-success-color, 20%)};
+  --success-darker-color: #{darken($app-success-color, 20%)};
+  --text-success-color: #{$light-primary-text};
+  --text-success-lighter-color: #{$dark-primary-text};
+  --text-success-darker-color: #{$light-primary-text};
+}
+$mat-success: (
+  main: $app-success-color,
+  lighter: lighten($app-success-color, 20%),
+  darker: darken($app-success-color, 20%),
+  200: $app-success-color,
+  // For slide toggle,
+  contrast:
+    (
+      main: $dark-primary-text,
+      lighter: $dark-primary-text,
+      darker: $light-primary-text,
+    ),
+);
+
+$app-success-palette: mat.define-palette($mat-success, main, lighter, darker);
+
+/*#endregion*/
+
+/*#region info*/
+
+body {
+  --info-color: #{$app-info-color};
+  --info-lighter-color: #{lighten($app-info-color, 20%)};
+  --info-darker-color: #{darken($app-info-color, 20%)};
+  --text-info-color: #{$light-primary-text};
+  --text-info-lighter-color: #{$dark-primary-text};
+  --text-info-darker-color: #{$light-primary-text};
+}
+$mat-info: (
+  main: $app-info-color,
+  lighter: lighten($app-info-color, 20%),
+  darker: darken($app-info-color, 20%),
+  200: $app-info-color,
+  // For slide toggle,
+  contrast:
+    (
+      main: $dark-primary-text,
+      lighter: $dark-primary-text,
+      darker: $dark-primary-text,
+    ),
+);
+
+$app-info-palette: mat.define-palette($mat-info, main, lighter, darker);
+
+/*#endregion*/
+
+/*#region warning*/
+
+body {
+  --warning-color: #{$app-warning-color};
+  --warning-lighter-color: #{lighten($app-warning-color, 20%)};
+  --warning-darker-color: #{darken($app-warning-color, 20%)};
+  --text-warning-color: #{$dark-primary-text};
+  --text-warning-lighter-color: #{$dark-primary-text};
+  --text-warning-darker-color: #{$dark-primary-text};
+}
+$mat-warning: (
+  main: $app-warning-color,
+  lighter: lighten($app-warning-color, 20%),
+  darker: darken($app-warning-color, 20%),
+  200: $app-warning-color,
+  // For slide toggle,
+  contrast:
+    (
+      main: $dark-primary-text,
+      lighter: $dark-primary-text,
+      darker: $dark-primary-text,
+    ),
+);
+
+$app-warning-palette: mat.define-palette($mat-warning, main, lighter, darker);
+
+/*#endregion*/
+
+/*#region danger*/
+
+body {
+  --danger-color: #{$app-danger-color};
+  --danger-lighter-color: #{lighten($app-danger-color, 20%)};
+  --danger-darker-color: #{darken($app-danger-color, 20%)};
+  --text-danger-color: #{$light-primary-text};
+  --text-danger-lighter-color: #{$dark-primary-text};
+  --text-danger-darker-color: #{$light-primary-text};
+}
+$mat-danger: (
+  main: $app-danger-color,
+  lighter: lighten($app-danger-color, 20%),
+  darker: darken($app-danger-color, 20%),
+  200: $app-danger-color,
+  // For slide toggle,
+  contrast:
+    (
+      main: $light-primary-text,
+      lighter: $dark-primary-text,
+      darker: $light-primary-text,
+    ),
+);
+
+$app-danger-palette: mat.define-palette($mat-danger, main, lighter, darker);
+
+/*#endregion*/
+
+$app-theme: (
+  primary: $app-primary-palette,
+  accent: $app-accent-palette,
+  warn: $app-warn-palette,
+  success: $app-success-palette,
+  info: $app-info-palette,
+  warning: $app-warning-palette,
+  danger: $app-danger-palette,
+  is-dark: false,
+  foreground: $mat-light-theme-foreground,
+  background: $mat-light-theme-background,
+);
+$app-theme-dark: (
+  primary: $app-primary-palette,
+  accent: $app-accent-palette,
+  warn: $app-warn-palette,
+  success: $app-success-palette,
+  info: $app-info-palette,
+  warning: $app-warning-palette,
+  danger: $app-danger-palette,
+  is-dark: true,
+  foreground: $mat-dark-theme-foreground,
+  background: $mat-dark-theme-background,
+);
+
+// Theme Init
+@include mat.all-component-themes($app-theme);
+
+.theme-alternate {
+  @include mat.all-component-themes($app-theme-dark);
+}
+
+@import "_variables";
+
+@import "_sidenav-theme";
+@import "_table-theme";
+@import "_expansion-theme";
+@import "_form-field-theme";
+@import "_dialog-theme";
+
+@import "_overrides";
+
+@include button.custom_theme($app-theme);
+@include expansion.custom_theme($app-theme);
+@include icon.custom_theme($app-theme);
+@include button-toggle.custom_theme($app-theme);
+@include toolbar.custom_theme($app-theme);

@@ -1,0 +1,55 @@
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+</mat-paginator>
+
+<table mat-table [dataSource]="dataSource || []">
+
+	<ng-container matColumnDef="id">
+		<th mat-header-cell *matHeaderCellDef>Id</th>
+		<td mat-cell *matCellDef="let group"> {{ group.id }}</td>
+	</ng-container>
+
+	<ng-container matColumnDef="name">
+		<th mat-header-cell *matHeaderCellDef>Nom</th>
+		<td mat-cell *matCellDef="let group"> {{ group.name }}</td>
+	</ng-container>
+
+	<ng-container matColumnDef="acronym">
+		<th mat-header-cell *matHeaderCellDef>Acronyme</th>
+		<td mat-cell *matCellDef="let group"> {{ group.acronym }}</td>
+	</ng-container>
+
+	<ng-container matColumnDef="userCount">
+		<th mat-header-cell *matHeaderCellDef>Nombre d'utilisateurs</th>
+		<td mat-cell *matCellDef="let group"> {{ group.userCount }}</td>
+	</ng-container>
+
+	<ng-container matColumnDef="actionDetails">
+		<th mat-header-cell *matHeaderCellDef>Détails</th>
+		<td mat-cell *matCellDef="let group">
+			<button mat-flat-button themeColor="info" (click)="details.emit(group)" [disabled]="group.canSeeDetails != true">
+				<mat-icon>info</mat-icon>
+			</button>
+		</td>
+	</ng-container>
+
+	<ng-container matColumnDef="actionUpdate">
+		<th mat-header-cell *matHeaderCellDef>Modifier</th>
+		<td mat-cell *matCellDef="let group">
+			<button mat-flat-button themeColor="warning" (click)="update.emit(group)" [disabled]="group.canUpdate != true">
+				<mat-icon>edit</mat-icon>
+			</button>
+		</td>
+	</ng-container>
+
+	<ng-container matColumnDef="actionDelete">
+		<th mat-header-cell *matHeaderCellDef>Supprimer</th>
+		<td mat-cell *matCellDef="let group">
+			<button mat-flat-button themeColor="danger" (click)="delete.emit(group)" [disabled]="group.canDelete != true">
+				<mat-icon>delete</mat-icon>
+			</button>
+		</td>
+	</ng-container>
+
+	<tr mat-header-row *matHeaderRowDef="columns"></tr>
+	<tr mat-row *matRowDef="let row; columns: columns"></tr>
+</table>

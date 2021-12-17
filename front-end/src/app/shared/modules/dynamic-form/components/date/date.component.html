@@ -1,0 +1,37 @@
+<div style="display: inline-flex; flex-direction: row; align-items: center;">
+
+    <ng-container *ngIf="schema.leadingIcon !== undefined">
+        <mat-icon class="df-leading-icon">
+            {{schema.leadingIcon}}
+        </mat-icon>
+    </ng-container>
+
+    <mat-form-field [formGroup]="group">
+        <input matInput [matDatepicker]="picker" [formControlName]="name!" [placeholder]="schema.placeholder!"
+            [required]="schema.required == true && formComponent.schema?.type == 'registration'">
+
+        <mat-icon matSuffix *ngIf="displayInvalidIcon" themeColor="warn">cancel</mat-icon>
+        <mat-icon matSuffix *ngIf="displayValidIcon" themeColor="success">check_circle</mat-icon>
+        <mat-spinner matSuffix [diameter]="18" *ngIf="displayPendingIcon"></mat-spinner>
+
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+
+        <mat-label>
+            {{ schema.label! }}
+        </mat-label>
+
+
+
+        <mat-hint>{{ schema.hint }}</mat-hint>
+
+        <ng-container *ngFor="let error of getErrors()" ngProjectAs="mat-error">
+            <mat-error *ngIf="schema.errorMessages != undefined && schema.errorMessages[ObjectKeys(error)[0]] != undefined">
+                {{ schema.errorMessages[ObjectKeys(error)[0]] }}</mat-error>
+            <mat-error *ngIf="!(schema.errorMessages != undefined && schema.errorMessages[ObjectKeys(error)[0]] != undefined)">
+                {{ validatorService.getErrorMessage(error) }} </mat-error>
+        </ng-container>
+
+    </mat-form-field>
+
+</div>

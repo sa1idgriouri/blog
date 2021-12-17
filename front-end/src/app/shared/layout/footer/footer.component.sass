@@ -1,0 +1,18 @@
+$footer-height: 25px
+$mobile-footer-height: 25px
+
+footer mat-toolbar
+    display: flex
+    justify-content: center
+    align-items: center
+    background-color: #222d32
+    color: #fafafa
+
+    height: $footer-height
+    font: 500 12px/#{$footer-height} Roboto, "Helvetica Neue", sans-serif
+
+    @media(max-width: 599px)
+
+        footer mat-toolbar
+            font: 500 12px/#{$mobile-footer-height} Roboto, "Helvetica Neue", sans-serif
+            justify-content: center

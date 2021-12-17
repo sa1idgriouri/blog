@@ -1,0 +1,77 @@
+$animation-time: 0.4s
+$width-padding: 8px
+$height-padding: 5px
+
+:host
+    position: absolute
+    top: 0
+    bottom: 0
+    right: 0
+    overflow: hidden
+    padding: $height-padding $width-padding
+
+    display: flex
+    align-items: center
+    //transition: padding $animation-time, border 0.2s
+
+    $icon-width: 40px
+    width: $icon-width
+    background: rgba(232, 232, 232, 0)
+
+    .search-icon
+        transition: font-size $animation-time
+        min-width: calc(#{$icon-width} - #{$width-padding})
+        display: flex
+        align-items: center
+        justify-content: center
+
+    .search-input
+        flex: 1 1 auto
+        height: 100%
+        background: transparent
+        border: none
+        outline: none
+
+    .close-button
+        width: 30px
+        height: 30px
+        line-height: 30px
+
+        .mat-icon
+            height: 18px
+            width: 18px
+            line-height: 18px
+            font-size: 18px
+
+    &.collapsed
+        animation: $animation-time collapse forwards
+
+    &.expanded
+        animation: $animation-time expand forwards
+        border-bottom: 1px solid black
+        padding-bottom: calc(#{$height-padding} - 1px)
+
+        &:hover
+            border-bottom: 2px solid black
+            padding-bottom: calc(#{$height-padding} - 2px)
+
+        &:focus-within
+            border-bottom: 2px solid black// var(--primary-color)
+            padding-bottom: calc(#{$height-padding} - 2px)
+
+    @keyframes expand
+        0%
+            width: $icon-width
+            background: rgba(232, 232, 232, 0)
+        100%
+            width: 100%
+            background: rgba(232, 232, 232, 1)
+
+    @keyframes collapse
+        0%
+            width: 100%
+            background: rgba(232, 232, 232, 1)
+
+        100%
+            width: $icon-width
+            background: rgba(232, 232, 232, 0)

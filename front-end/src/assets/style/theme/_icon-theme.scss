@@ -1,0 +1,27 @@
+@use "sass:map";
+@use "~@angular/material" as mat;
+
+@mixin custom_theme($theme) {
+	$info: map.get($theme, info);
+	$success: map.get($theme, success);
+	$warning: map.get($theme, warning);
+	$danger: map.get($theme, danger);
+
+	.mat-icon {
+		&.mat-info {
+			color: mat.get-color-from-palette($info, text);
+		}
+
+		&.mat-success {
+			color: mat.get-color-from-palette($success, text);
+		}
+
+		&.mat-warning {
+			color: mat.get-color-from-palette($warning, text);
+		}
+
+		&.mat-danger {
+			color: mat.get-color-from-palette($danger, text);
+		}
+	}
+}

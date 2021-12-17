@@ -1,0 +1,42 @@
+<div [formGroup]="group">
+
+    <span style="display: flex; align-items: center">
+
+        <mat-label style="margin-right: 5px;">
+            {{ schema.label! }}
+            <!-- <ng-container *ngIf="!isRequired()">
+                <span class="optional" [style.font-style]="'italic'" [style.font-size]="'65%'">Optional</span>
+            </ng-container> -->
+        </mat-label>
+
+        <mat-icon matSuffix *ngIf="displayInvalidIcon" themeColor="warn">cancel</mat-icon>
+        <mat-icon matSuffix *ngIf="displayValidIcon" themeColor="success">check_circle</mat-icon>
+        <mat-spinner matSuffix [diameter]="18" *ngIf="displayPendingIcon"></mat-spinner>
+
+    </span>
+
+    <mat-hint>{{ schema.hint }}</mat-hint>
+    <div class="mat-form-field-subscript-wrapper dirty-mat-form-field-subscript-wrapper">
+        <ng-container *ngIf="formControl!.valid == false && formControl!.touched == true && formControl!.enabled">
+            <ng-container *ngFor="let error of getErrors()" ngProjectAs="mat-error">
+                <mat-error *ngIf="schema.errorMessages != undefined && schema.errorMessages[ObjectKeys(error)[0]] != undefined">
+                    {{ schema.errorMessages[ObjectKeys(error)[0]] }}</mat-error>
+                <mat-error *ngIf="!(schema.errorMessages != undefined && schema.errorMessages[ObjectKeys(error)[0]] != undefined)">
+                    {{ validatorService.getErrorMessage(error) }} </mat-error>
+            </ng-container>
+
+        </ng-container>
+    </div>
+
+    <div id="checkbox-container" [ngClass]="{'vertical' : schema.direction == 'vertical', 'horizontal' : schema.direction != 'vertical'}" [formGroupName]='name'>
+        <!-- <ng-container *ngFor="let option of schema.options | keyvalue">
+					<mat-checkbox
+					[value]="option.value"
+					[formControlName]="option.value"
+					>{{option.key}}</mat-checkbox>
+				</ng-container> -->
+
+        <mat-checkbox *ngFor="let option of sortedOptions" [value]="option.value" [formControlName]="option.value">{{option.key}}</mat-checkbox>
+
+    </div>
+</div>

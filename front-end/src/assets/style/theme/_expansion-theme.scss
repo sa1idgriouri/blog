@@ -1,0 +1,60 @@
+@use "sass:map";
+@use "sass:meta";
+
+@use "~@angular/material" as mat;
+
+$_header_border_top_size: 3px;
+
+@mixin custom_theme($theme) {
+	$primary: map.get($theme, primary);
+	$accent: map.get($theme, accent);
+	$warn: map.get($theme, warn);
+	$info: map.get($theme, info);
+	$success: map.get($theme, success);
+	$warning: map.get($theme, warning);
+	$danger: map.get($theme, danger);
+
+	.mat-expansion-panel {
+		&.mat-primary,
+		&.mat-accent,
+		&.mat-warn,
+		&.mat-info,
+		&.mat-success,
+		&.mat-warning,
+		&.mat-danger {
+			&:first-of-type,
+			&:not(:first-of-type) {
+				border-top-right-radius: 0px;
+				border-top-left-radius: 0px;
+			}
+		}
+
+		&.mat-primary .mat-expansion-panel-header {
+			border-top: $_header_border_top_size solid mat.get-color-from-palette($primary);
+		}
+
+		&.mat-accent .mat-expansion-panel-header {
+			border-top: $_header_border_top_size solid mat.get-color-from-palette($accent);
+		}
+
+		&.mat-warn .mat-expansion-panel-header {
+			border-top: $_header_border_top_size solid mat.get-color-from-palette($warn);
+		}
+
+		&.mat-info .mat-expansion-panel-header {
+			border-top: $_header_border_top_size solid mat.get-color-from-palette($info);
+		}
+
+		&.mat-success .mat-expansion-panel-header {
+			border-top: $_header_border_top_size solid mat.get-color-from-palette($success);
+		}
+
+		&.mat-warning .mat-expansion-panel-header {
+			border-top: $_header_border_top_size solid mat.get-color-from-palette($warning);
+		}
+
+		&.mat-danger .mat-expansion-panel-header {
+			border-top: $_header_border_top_size solid mat.get-color-from-palette($danger);
+		}
+	}
+}

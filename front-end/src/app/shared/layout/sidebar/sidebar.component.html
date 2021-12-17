@@ -1,0 +1,19 @@
+<mat-nav-list>
+    <ng-container *ngIf="deviceService.screenSize <= eScreenSize.sm">
+        <div id="logoContainer">
+            <img src="assets/images/logo2.png" id="logo">
+        </div>
+    </ng-container>
+
+
+    <mat-accordion [multi]="fullMode">
+        <ng-container *ngFor="let sidebarItem of sidebarItems">
+            <app-sidebar-item [sidebarItem]="sidebarItem"></app-sidebar-item>
+        </ng-container>
+    </mat-accordion>
+
+
+
+
+
+</mat-nav-list>

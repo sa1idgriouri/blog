@@ -1,0 +1,36 @@
+@use "sass:map";
+@use "sass:meta";
+
+@use "~@angular/material" as mat;
+
+@mixin custom-theme($theme) {
+	$info: map.get($theme, info);
+	$success: map.get($theme, success);
+	$warning: map.get($theme, warning);
+	$danger: map.get($theme, danger);
+	$background: map.get($theme, background);
+	$foreground: map.get($theme, foreground);
+
+	.mat-toolbar {
+		&.mat-info {
+			@include _palette-styles($info);
+		}
+
+		&.mat-success {
+			@include _palette-styles($success);
+		}
+
+		&.mat-warning {
+			@include _palette-styles($warning);
+		}
+
+		&.mat-danger {
+			@include _palette-styles($danger);
+		}
+	}
+}
+
+@mixin _palette-styles($palette) {
+	background: mat.get-color-from-palette($palette);
+	color: mat.get-color-from-palette($palette, default-contrast);
+}

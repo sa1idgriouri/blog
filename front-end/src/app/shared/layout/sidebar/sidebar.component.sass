@@ -1,0 +1,175 @@
+$sidebar-background-color: #272c34
+$sidebar-width: 200px
+$sidebar-expanded-icon-size: 24px
+$sidebar-schrinked-icon-size: 24px
+$sidebar-shrinked-width: 64px - $sidebar-expanded-icon-size + $sidebar-schrinked-icon-size
+$animation-time: 0.3s
+
+:host
+	display: block
+	background-color: $sidebar-background-color
+	min-height: 100%
+	width: $sidebar-width
+	color: black
+	// padding-right: 10px
+	// padding-left: 10px
+
+	transition: width $animation-time
+
+	.mat-nav-list
+		padding-top: 0px
+
+	#logoContainer
+		text-align: center
+		padding: 10px
+
+		#logo
+			//height: 100%
+			width: 100%
+
+	#userInfo
+		//height: 180px
+
+		display: flex
+		flex-direction: column
+		align-items: center
+
+		white-space: nowrap
+		overflow: hidden
+
+		background-color: #292929
+
+		padding-top: 10px
+		padding-bottom: 20px
+
+		#avatar
+			transition: font-size $animation-time, height $animation-time, width $animation-time
+
+			font-size: calc(#{$sidebar-width} - 80px)
+			height: calc(#{$sidebar-width} - 80px)
+			width: calc(#{$sidebar-width} - 80px)
+
+		#names
+			margin-top: 10px
+			// font-size: 16px
+			.name ~ .name
+				margin-left: 2px
+
+		#role
+			color: #bbb
+			font-size: 90%
+
+		#status
+			color: #bbb
+			font-size: 90%
+			display: flex
+			align-items: center
+			justify-content: center
+
+			.mat-icon
+				color: #5cb85c
+				font-size: 12px
+				width: 12px
+				height: 12px
+
+				margin-right: 5px
+
+		#names, #role, #status, #status *
+			transition: font-size $animation-time, height $animation-time, width $animation-time, margin $animation-time, line-height $animation-time
+		img
+			width: 50%
+
+	::ng-deep.mat-expansion-panel-spacing
+		margin: 0
+
+	::ng-deep.mat-list-item-content, ::ng-deep.mat-expansion-panel .mat-expansion-panel-header
+		white-space: nowrap
+		overflow: hidden
+
+		.mat-icon
+			transition: width $animation-time, height $animation-time, font-size $animation-time
+			width: $sidebar-expanded-icon-size
+			height: $sidebar-expanded-icon-size
+			font-size: $sidebar-expanded-icon-size
+
+		.mat-content
+			overflow: initial
+
+		.mat-expansion-indicator
+			transition: width $animation-time, z-index $animation-time, background-color $animation-time
+
+	&.icon-mode
+		width: $sidebar-shrinked-width
+
+		#userInfo
+			padding-bottom: 10px
+			#avatar
+				font-size: calc(#{$sidebar-shrinked-width} - 20px)
+				height: calc(#{$sidebar-shrinked-width} - 20px)
+				width: calc(#{$sidebar-shrinked-width} - 20px)
+
+			#names, #role, #status, #status *
+				font-size: 0
+				margin-top: 0
+				line-height: 0
+
+				.name
+					font-size: 0
+
+					&:first-letter
+						font-size: 12
+
+				.mat-icon
+					height: 0
+
+			// #userFullName
+			// 	display: none
+
+		// sub item positionning
+
+		::ng-deep.mat-expansion-panel
+			overflow: visible
+			display: flex
+
+			::ng-deep.mat-expansion-panel-content
+				position: absolute
+				top: 0
+				right: 0
+				transform: translate(100%, 0)
+				width: max-content
+				overflow: hidden
+				border-left: 1px solid #3e3e3e
+
+				::ng-deep.mat-expansion-panel-body
+					background-color: $sidebar-background-color
+
+		::ng-deep.mat-list-item-content, ::ng-deep.mat-expansion-panel
+			display: flex
+			align-items: center
+			justify-content: flex-start
+
+			.mat-icon
+				width: $sidebar-schrinked-icon-size
+				height: $sidebar-schrinked-icon-size
+				font-size: $sidebar-schrinked-icon-size
+
+			.mat-icon ~ *
+				margin-left: 20px
+
+			.mat-expansion-panel-header
+				width: 100%
+
+				.mat-content
+					justify-content: flex-start
+
+			::ng-deep.mat-list-item-content, ::ng-deep.mat-expansion-panel
+				justify-content: initial
+
+				.mat-icon ~ *
+					margin-left: 10px
+
+			.mat-expansion-panel-body ::ng-deep.mat-list-item > .mat-list-item-content
+				padding: 0px 15px
+
+		::ng-deep.mat-expansion-panel-body	.mat-list-item-content *
+			display: block

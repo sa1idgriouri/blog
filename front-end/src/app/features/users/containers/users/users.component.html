@@ -1,0 +1,7 @@
+<div class="card-container">
+    <mat-card>
+        <app-list-users [userList]="userList" (details)="onDetailsClick($event)" (add)="onAddClick()"
+            (update)="onUpdateClick($event)" (delete)="onDeleteClick($event)">
+        </app-list-users>
+    </mat-card>
+</div>

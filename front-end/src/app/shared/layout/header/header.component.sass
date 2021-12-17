@@ -1,0 +1,81 @@
+$header-height: 60px
+$mobile-header-height: 60px
+
+.mat-toolbar
+    height: $header-height
+    padding-left: 0px
+    background: #ecf0f5
+    color: black
+
+    #leftContainer
+        display: flex
+        align-items: center
+        justify-content: space-between
+        padding: 0px 10px
+        width: 200px
+        background-color: #272c34
+        height: 100%
+
+        #logoWrapper
+            display: inline-flex
+            align-items: center
+            justify-content: center
+            height: 100%
+
+            #logo
+                max-width: 100%
+                height: auto
+    .imageLogin
+        width: 31px
+        height: 31px
+::ng-deep.cdk-overlay-container
+    //top: $header-height
+    //height: calc(100% - #{$header-height})
+
+    .agenda-backdrop
+        background: rgba(0, 0, 0, 0.32)
+        margin-top: $header-height
+
+    .agenda-panel
+        width: 95vw
+        max-width: 95vw !important
+        height: calc(95vh - #{$header-height})
+        margin-top: $header-height
+
+        .mat-dialog-container
+            background-color: rgba(255, 255, 255, 0.95)
+
+::ng-deep.cdk-overlay-pane.agenda-panel .mat-dialog-container
+    padding: 0px
+
+@media screen and (min-width: 600px)
+    .mat-toolbar
+
+        .mat-icon
+            width: 20px
+            height: 20px
+            line-height: 20px
+            font-size: 20px
+
+        #fullName
+            font-size: 13px
+
+@media screen and (max-width: 599px)
+    .mat-toolbar
+        height: $mobile-header-height
+
+    ::ng-deep.cdk-overlay-container
+        // top: $mobile-header-height
+        // height: calc(100% - #{$mobile-header-height})
+
+        .agenda-backdrop
+            margin-top: $mobile-header-height
+
+        .agenda-panel
+            width: 80vw
+            max-width: 80vw !important
+            height: calc(90vh - #{$mobile-header-height})
+            margin-top: $header-height
+
+        #fullName
+            font-size: 80%

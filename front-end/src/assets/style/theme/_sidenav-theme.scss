@@ -1,0 +1,70 @@
+.mat-drawer-container {
+	background-color: #ecf0f5;
+}
+
+.mat-sidenav .mat-nav-list.mat-list-base {
+
+    .mat-list-item, .mat-expansion-panel {
+		color: rgba(255, 255, 255, 0.87);
+		background-color: transparent;
+		box-shadow: none;	
+
+		&:hover { 
+			background-color: hsla(0, 0%, 100%, .04);
+		}
+
+		&.mat-list-item-active {
+			color: $app-primary-color !important;
+			background-color: rgba($app-primary-color, 0.15);
+
+			&:hover {
+				background-color: rgba($app-primary-color, 0.3);
+			}
+		}
+
+		.mat-ripple-element {
+			background-color: rgba(255, 255, 255, 0.1)
+		}
+
+		.mat-list-item-content, .mat-expansion-panel-header {
+			padding: 0px 20px;
+			height: 48px;
+			font-size: 12px;	
+
+			.mat-expansion-indicator::after {
+				color: rgba(255, 255, 255, 0.87);
+			}
+
+			.mat-content {
+				align-items: center;
+			}
+		}
+
+		.mat-expansion-panel-body {
+			padding: 0px;
+
+			.mat-list-item-content, .mat-expansion-panel-header {
+				padding-left: 32px;
+				font-size: 80%;
+
+				.mat-icon {
+					font-size: 16px;
+					width: 16px;
+					height: 16px;
+				}
+			}
+		}
+
+		// &.mat-expanded {
+		// 	height: 48px
+		// }
+
+	}  
+   
+}
+
+@media (hover: none) {
+	.mat-expansion-panel:not(.mat-expanded):not([aria-disabled=true]) .mat-expansion-panel-header:hover {
+		background-color: hsla(0,0%,100%,.04) !important;
+	}
+}

@@ -1,0 +1,37 @@
+// @import 'theme/old-theme'
+// @include mat-core()
+// @include angular-material-theme($app-light-theme)
+
+@import 'theme/theme'
+
+@import '~@sweetalert2/theme-material-ui/material-ui'
+
+body
+    margin: 0
+
+*
+    box-sizing: border-box
+
+.badge, .mini-badge
+    display: inline-flex
+    border-radius: 10px
+    align-items: center
+    cursor: default
+    height: 1px
+
+    & ~ *
+        margin-left: 5px
+
+    &.badge
+        padding: 5px 9px
+        min-height: 22px
+        font-size: 90%
+
+    &.mini-badge
+        padding: 2px 4px
+        min-height: 14px
+        font-size: 60%
+
+// .mat-body, .mat-body-1, .mat-typography, .mat-expansion-panel-content
+//     font: 400 12px/16px Roboto, "Helvetica Neue", sans-serif
+//     letter-spacing: normal

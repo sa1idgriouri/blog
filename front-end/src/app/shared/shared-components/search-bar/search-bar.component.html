@@ -1,0 +1,10 @@
+<!-- <input class="searchbar-input" placeholder="Rechercher" /> -->
+<span class="search-icon">
+    <mat-icon>search</mat-icon>
+</span>
+
+<input class="search-input" placeholder="Rechercher" type="text" [(ngModel)]="value" #searchInput>
+
+<button *ngIf="value" mat-icon-button aria-label="Clear" (click)="value=''" class="close-button">
+    <mat-icon>close</mat-icon>
+</button>

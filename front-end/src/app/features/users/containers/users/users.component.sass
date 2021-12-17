@@ -1,0 +1,18 @@
+:host
+    width: 100%
+    min-height: 100%
+    display: grid
+    grid-gap: 20px
+    grid-auto-rows: auto 1fr
+    .header
+        display: flex
+        justify-content: space-between
+
+@media screen and ( max-width: 599px)
+    .mat-card
+        max-width: 100% !important
+
+@media screen and (max-width: 959px)
+    :host .card-container
+        &:nth-child(2)
+            column-count: 1

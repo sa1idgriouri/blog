@@ -1,0 +1,86 @@
+:host > form
+    width: 100%
+    display: grid
+    padding: 10px
+    grid-row-gap: 10px
+    // max-width: 800px
+    // margin: auto
+
+    ::ng-deep df-form > form
+        padding: 0px
+
+    ::ng-deep.df-form-control
+        // display: inline-flex
+        // align-items: center
+
+        .df-leading-icon
+            //mix-width: 50px
+            padding-right: 40px
+
+        // .df-suffix-icon
+        //     font-size: 150%
+        //     line-height: 1.125
+
+        & > *
+            width: 100%
+
+        ::ng-deep.e-float-input .e-float-text.e-label-top
+            font-size: 12px
+            transform: translate3d(0, -6px, 0) scale(0.75)
+
+        .mat-form-field
+            width: 100%
+
+            ::ng-deep.mat-form-field-infix
+                width: auto
+
+            ::ng-deep.mat-form-field-suffix
+                display: flex
+                flex-direction: row
+                align-items: center
+
+                .mat-icon:not([color]):not([themeColor])
+                    color: rgba(0, 0, 0, 0.54)
+
+                & > *
+                    font-size: 22px
+                    display: flex
+                    align-items: center
+                    justify-content: center
+
+            ::ng-deep.mat-error
+                display: flex
+                align-items: center
+                font-weight: bold
+
+                & > ::ng-deep.mat-error
+                    display: none
+
+                .mat-icon
+                    margin-right: 5px
+                    font-size: 1.3em
+
+    ::ng-deep.dirty-mat-form-field-subscript-wrapper
+        position: relative
+        margin-top: -2px
+        top: 0px
+
+    @media screen and (min-width: 600px)
+        ::ng-deep.df-form-control
+            margin-right: 5px
+            margin-left: 5px
+
+            display: flex
+            align-items: center
+
+            &.last
+                margin-right: 0px
+
+            &.first
+                margin-left: 0px
+
+    @media (max-width: 599px)
+        &.responsive
+            display: flex
+            flex-direction: column
+            //height: 100%

@@ -1,0 +1,47 @@
+$dialog-padding: 20px;
+
+@media screen and (min-width: 750px) {
+	.cdk-overlay-pane {
+		min-width: 600px;
+		max-height: 95vh;
+	}
+}
+
+@media screen and (max-width: 749px) {
+	.cdk-overlay-pane {
+		max-height: 95vh;
+	}
+}
+
+.cdk-overlay-pane .mat-dialog-container {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	overflow-x: hidden;
+
+	& > *:not(.mat-dialog-title) {
+		order: 2;
+		overflow-x: auto;
+		overflow-y: auto;
+	}
+
+	& > .mat-dialog-title {
+		order: 1;
+		margin: 0px;
+	}
+}
+
+.cdk-overlay-pane:not(.no-padding) .mat-dialog-container {
+	padding: $dialog-padding;
+
+	.mat-dialog-title {
+		width: calc(100% + #{$dialog-padding} * 2);
+		margin-left: -$dialog-padding;
+		margin-top: -$dialog-padding;
+		margin-bottom: $dialog-padding;
+	}
+}
+
+.cdk-overlay-pane.no-padding .mat-dialog-container {
+	padding: 0px;
+}

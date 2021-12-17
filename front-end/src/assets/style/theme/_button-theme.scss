@@ -1,0 +1,122 @@
+@use "sass:map";
+@use "sass:meta";
+
+@use "~@angular/material" as mat;
+
+$_ripple-opacity: 0.1;
+
+@mixin custom_theme($theme) {
+	$info: map.get($theme, info);
+	$success: map.get($theme, success);
+	$warning: map.get($theme, warning);
+	$danger: map.get($theme, danger);
+	$background: map.get($theme, background);
+	$foreground: map.get($theme, foreground);
+
+	.mat-button,
+	.mat-icon-button,
+	.mat-stroked-button {
+		@include _theme-property($theme, "color", text);
+		@include _focus-overlay-color($theme);
+	}
+
+	.mat-flat-button,
+	.mat-raised-button,
+	.mat-fab,
+	.mat-mini-fab {
+		// Default font and background color when not using any color palette.
+		color: mat.get-color-from-palette($foreground, text);
+		background-color: mat.get-color-from-palette($background, raised-button);
+
+		@include _theme-property($theme, "color", default-contrast);
+		@include _theme-property($theme, "background-color", default);
+		@include _ripple-color($theme, default-contrast);
+	}
+}
+
+@mixin _focus-overlay-color($theme) {
+	$info: map.get($theme, info);
+	$success: map.get($theme, success);
+	$warning: map.get($theme, warning);
+	$danger: map.get($theme, danger);
+
+	&.mat-info .mat-button-focus-overlay {
+		background-color: mat.get-color-from-palette($info);
+	}
+
+	&.mat-success .mat-button-focus-overlay {
+		background-color: mat.get-color-from-palette($success);
+	}
+
+	&.mat-warning .mat-button-focus-overlay {
+		background-color: mat.get-color-from-palette($warning);
+	}
+
+	&.mat-danger .mat-button-focus-overlay {
+		background-color: mat.get-color-from-palette($danger);
+	}
+}
+
+@mixin _ripple-background($palette, $hue, $opacity) {
+	$background-color: mat.get-color-from-palette($palette, $hue, $opacity);
+	background-color: $background-color;
+	@if (meta.type-of($background-color) != color) {
+		opacity: $opacity;
+	}
+}
+
+@mixin _ripple-color($theme, $hue, $opacity: $_ripple-opacity) {
+	$info: map.get($theme, info);
+	$success: map.get($theme, success);
+	$warning: map.get($theme, warning);
+	$danger: map.get($theme, danger);
+
+	&.mat-info .mat-ripple-element {
+		@include _ripple-background($info, $hue, $opacity);
+	}
+
+	&.mat-success .mat-ripple-element {
+		@include _ripple-background($success, $hue, $opacity);
+	}
+
+	&.mat-warning .mat-ripple-element {
+		@include _ripple-background($warning, $hue, $opacity);
+	}
+
+	&.mat-danger .mat-ripple-element {
+		@include _ripple-background($danger, $hue, $opacity);
+	}
+}
+
+@mixin _theme-property($theme, $property, $hue) {
+	$info: map.get($theme, info);
+	$success: map.get($theme, success);
+	$warning: map.get($theme, warning);
+	$danger: map.get($theme, danger);
+	$background: map.get($theme, background);
+	$foreground: map.get($theme, foreground);
+
+	&.mat-info {
+		#{$property}: mat.get-color-from-palette($info, $hue);
+	}
+	&.mat-success {
+		#{$property}: mat.get-color-from-palette($success, $hue);
+	}
+	&.mat-warning {
+		#{$property}: mat.get-color-from-palette($warning, $hue);
+	}
+	&.mat-danger {
+		#{$property}: mat.get-color-from-palette($danger, $hue);
+	}
+
+	&.mat-info,
+	&.mat-success,
+	&.mat-warning,
+	&.mat-danger,
+	&.mat-button-disabled {
+		&.mat-button-disabled {
+			$palette: if($property == "color", $foreground, $background);
+			#{$property}: mat.get-color-from-palette($palette, disabled-button);
+		}
+	}
+}

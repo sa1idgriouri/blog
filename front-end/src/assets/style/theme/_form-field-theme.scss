@@ -1,0 +1,9 @@
+// .mat-form-field-prefix .mat-icon, .mat-form-field-suffix .mat-icon {
+// 	font-size: 200%
+// }
+
+
+.mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-prefix .mat-icon-button, 
+.mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-suffix .mat-icon-button {
+	zoom: 1.33;
+}

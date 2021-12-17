@@ -1,0 +1,16 @@
+@use '~@angular/material' as mat
+
+:host
+    #timesWrapper
+        background-color: #ffffff
+        position: fixed
+        z-index: 1
+        overflow-y: auto
+        max-height: 400px
+        display: flex
+        flex-direction: column
+
+        button
+            text-align: left
+
+        @include mat.elevation(2)
